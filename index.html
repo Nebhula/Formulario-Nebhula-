@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULARIO DE ENVÍO DE APLICACIONES</title>
+
+<center><img alt="" border="0" data-original-height="256" data-original-width="256" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7ntoHA5n4sZPBYfRJ1j9o6yi0-AREOP6lOayPPJQu3LFrz3_gYkFXjXEwdRnc-WqmHWLEjSuMvOUzxN8ZfMYwKoGufAuHSqmIvYH3eLMIq8B4W7AX0lqhfWhpNT4IYzkuRToIHlbSBz2Qf2CM99Gwgy1_nSN2CPJAoZiOjitER0gQVknIILPVl7EhmDM/s1600/Copia%20de%20Copia%20de%20king%20%2817%29.png"/></center><br/>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .form-container h2 {
+            text-align: center;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .form-container input, .form-container textarea, .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-container button {
+            width: 48%;
+            padding: 10px;
+            background-color: #25d366; /* WhatsApp color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px 1%;
+        }
+        .form-container button.preview-btn {
+            background-color: #000e44;
+        }
+        .form-container button:hover {
+            opacity: 0.9;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .preview-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e6e6e6;
+            border-radius: 8px;
+        }
+        .preview-container h3 {
+            text-align: center;
+        }
+        .preview-container .preview-field {
+            margin-bottom: 15px;
+        }
+        .preview-container .preview-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .preview-container .preview-images img {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 8px;
+        }
+        .preview-container .preview-images button {
+            display: block;
+            margin-top: 5px;
+            padding: 5px 10px;
+            background-color: #ff704d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Estilo para el botón de seleccionar archivo */
+        .custom-file-input {
+            display: none;
+        }
+        .file-label {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #000e44;  /* Color rosa */
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .file-label:hover {
+            background-color: #000e44;  /* Color rosa más oscuro al pasar el ratón */
+        }
+
+        /* Estilo para las imágenes previas */
+        .form-container input[type="file"]:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Formulario de Envío de Aplicación</h2>
+        <form id="appForm" onsubmit="return handleSubmit()">
+            <label for="name">Tu Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Tu Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="description">Descripción:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="category">Categoría:</label>
+            <select id="category" name="category" required>
+                <option value="juegos">Juegos</option>
+                <option value="productividad">Productividad</option>
+                <option value="educacion">Educación</option>
+                <option value="salud">Salud</option>
+                <option value="fotografia">Fotografía</option>
+                <option value="social">Social</option>
+                <option value="viajes">Viajes</option>
+                <option value="finanzas">Finanzas</option>
+                <option value="musica">Música</option>
+                <option value="compras">Compras</option>
+                <option value="noticias">Noticias</option>
+                <option value="entretenimiento">Entretenimiento</option>
+                <option value="deportes">Deportes</option>
+                <option value="comunicacion">Comunicación</option>
+                <option value="herramientas">Herramientas</option>
+                <option value="otros">Otros</option>
+            </select>
+
+            <label for="platform">Plataforma:</label>
+            <select id="platform" name="platform" required>
+                <option value="ANDROID">ANDROID</option>
+            </select>
+
+            <label for="developer">Desarrollador:</label>
+            <input type="text" id="developer" name="developer" required>
+
+            <label for="downloadUrl">URL de descarga o página web:</label>
+            <input type="url" id="downloadUrl" name="downloadUrl" required>
+
+            <label for="version">Versión:</label>
+            <input type="text" id="version" name="version" required>
+
+            <label for="fileSize">Tamaño del archivo:</label>
+            <input type="text" id="fileSize" name="fileSize" required>
+
+            <label for="license">Licencia:</label>
+            <input type="text" id="license" name="license" value="GRATIS" required>
+
+            <label for="logo">Imagen logo (200x200 mínimo, cuadrada o mayor):</label>
+            <label for="logo" class="file-label">Seleccionar archivo</label>
+            <input type="file" id="logo" name="logo" accept="image/*" onchange="validateLogo()" required class="custom-file-input">
+            <div id="logoError" class="error-message"></div>
+
+            <label>Capturas de Pantalla (máximo 5 imágenes, opcional):</label>
+            <div id="screenshotInputs">
+                <label for="screenshot1" class="file-label">Captura 1 (mínimo 1080x600px horizontal o 600x1080px vertical):</label>
+                <input type="file" id="screenshot1" accept="image/*" onchange="validateScreenshot(0)" class="custom-file-input">
+                <label for="screenshot2" class="file-label">Captura 2 (mínimo 1080x600px horizontal o 600x1080px vertical):</label>
+                <input type="file" id="screenshot2" accept="image/*" onchange="validateScreenshot(1)" class="custom-file-input">
+                <label for="screenshot3" class="file-label">Captura 3 (mínimo 1080x600px horizontal o 600x1080px vertical):</label>
+                <input type="file" id="screenshot3" accept="image/*" onchange="validateScreenshot(2)" class="custom-file-input">
+                <label for="screenshot4" class="file-label">Captura 4 (mínimo 1080x600px horizontal o 600x1080px vertical):</label>
+                <input type="file" id="screenshot4" accept="image/*" onchange="validateScreenshot(3)" class="custom-file-input">
+                <label for="screenshot5" class="file-label">Captura 5 (mínimo 1080x600px horizontal o 600x1080px vertical):</label>
+                <input type="file" id="screenshot5" accept="image/*" onchange="validateScreenshot(4)" class="custom-file-input">
+            </div>
+            <div class="error-message" id="screenshotError"></div>
+
+            <button type="button" class="preview-btn" onclick="previewData()">Previsualizar</button>
+            <button type="submit">Envíe su App</button>
+        </form>
+    </div>
+
+    <div class="preview-container" id="previewContainer" style="display: none;">
+        <h3>Vista Previa de los Datos</h3>
+        <div id="previewData"></div>
+        <div class="preview-images" id="previewImages"></div>
+    </div>
+
+    <div id="confirmationMessage" style="display:none; padding: 15px; border: 1px solid #28a745; background-color: #d4edda; margin-top: 20px; color: #155724; border-radius: 4px;">
+        ¡Gracias por enviar tu aplicación! Nos pondremos en contacto contigo pronto.
+    </div>
+
+    <script>
+        const images = {
+            logo: null,
+            screenshots: [null, null, null, null, null]
+        };
+
+        // Validación del logo
+        function validateLogo() {
+            const input = document.getElementById('logo');
+            const file = input.files[0];
+            const errorDiv = document.getElementById('logoError');
+
+            if (!file) return;
+
+            const img = new Image();
+            img.onload = () => {
+                if (img.width < 200 || img.height < 200 || img.width !== img.height) {
+                    errorDiv.textContent = "El logo debe ser cuadrado (mismo tamaño de ancho y alto) y al menos 200x200 píxeles.";
+                    images.logo = null;
+                    input.value = "";
+                } else {
+                    errorDiv.textContent = "";
+                    images.logo = file;
+                }
+            };
+            img.src = URL.createObjectURL(file);
+        }
+
+        // Validación de las capturas de pantalla
+        function validateScreenshot(index) {
+            const input = document.getElementById(`screenshot${index + 1}`);
+            const file = input.files[0];
+            const errorDiv = document.getElementById('screenshotError');
+
+            if (!file) return;
+
+            const img = new Image();
+            img.onload = () => {
+                const minWidth = (img.width >= img.height) ? 1080 : 600;
+                const minHeight = (img.height >= img.width) ? 1080 : 600;
+
+                if (img.width < minWidth || img.height < minHeight) {
+                    errorDiv.textContent = `Las capturas deben tener al menos ${minWidth}x${minHeight} píxeles.`;
+                    images.screenshots[index] = null;
+                    input.value = "";
+                } else {
+                    errorDiv.textContent = "";
+                    images.screenshots[index] = file;
+                    previewImages();
+                }
+            };
+            img.src = URL.createObjectURL(file);
+        }
+
+        // Previsualizar imágenes
+        function previewImages() {
+            const previewImagesContainer = document.getElementById('previewImages');
+            previewImagesContainer.innerHTML = '';
+
+            if (images.logo) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(images.logo);
+                previewImagesContainer.appendChild(img);
+            }
+
+            images.screenshots.forEach((imgFile, index) => {
+                if (imgFile) {
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(imgFile);
+
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = "Eliminar";
+                    removeButton.onclick = () => {
+                        images.screenshots[index] = null;
+                        previewImages();
+                    };
+
+                    const imgContainer = document.createElement('div');
+                    imgContainer.appendChild(img);
+                    imgContainer.appendChild(removeButton);
+                    previewImagesContainer.appendChild(imgContainer);
+                }
+            });
+        }
+
+        // Función para previsualizar los datos del formulario
+        function previewData() {
+            const form = document.getElementById('appForm');
+            formData = {
+                name: form.name.value,
+                email: form.email.value,
+                title: form.title.value,
+                description: form.description.value,
+                category: form.category.value,
+                platform: form.platform.value,
+                developer: form.developer.value,
+                downloadUrl: form.downloadUrl.value,
+                version: form.version.value,
+                fileSize: form.fileSize.value,
+                license: form.license.value,
+            };
+
+            const previewContainer = document.getElementById('previewData');
+            previewContainer.innerHTML = `
+                <div><strong>Nombre:</strong> ${formData.name}</div>
+                <div><strong>Correo:</strong> ${formData.email}</div>
+                <div><strong>Título:</strong> ${formData.title}</div>
+                <div><strong>Descripción:</strong> ${formData.description}</div>
+                <div><strong>Categoría:</strong> ${formData.category}</div>
+                <div><strong>Plataforma:</strong> ${formData.platform}</div>
+                <div><strong>Desarrollador:</strong> ${formData.developer}</div>
+                <div><strong>URL de descarga:</strong> ${formData.downloadUrl}</div>
+                <div><strong>Versión:</strong> ${formData.version}</div>
+                <div><strong>Tamaño del archivo:</strong> ${formData.fileSize}</div>
+                <div><strong>Licencia:</strong> ${formData.license}</div>
+            `;
+            
+            document.getElementById('previewContainer').style.display = 'block';
+            previewImages();
+        }
+
+        // Validación del formulario
+        function validateForm() {
+            const form = document.getElementById('appForm');
+            const email = form.email.value;
+            const logo = images.logo;
+            const screenshots = images.screenshots;
+
+            if (!form.name.value || !form.email.value || !form.title.value || !form.description.value ||
+                !form.category.value || !form.platform.value || !form.developer.value ||
+                !form.downloadUrl.value || !form.version.value || !form.fileSize.value || !form.license.value ||
+                !logo) {
+                alert("Por favor, complete todos los campos obligatorios.");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Enviar el formulario a WhatsApp
+        function submitToWhatsApp() {
+            const whatsappMessage = `
+                Nombre: ${formData.name}
+                Correo: ${formData.email}
+                Título: ${formData.title}
+                Descripción: ${formData.description}
+                Categoría: ${formData.category}
+                Plataforma: ${formData.platform}
+                Desarrollador: ${formData.developer}
+                URL de descarga: ${formData.downloadUrl}
+                Versión: ${formData.version}
+                Tamaño del archivo: ${formData.fileSize}
+                Licencia: ${formData.license}
+            `;
+            
+            const whatsappLink = `https://wa.me/1234567890?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappLink, "_blank");
+            document.getElementById('confirmationMessage').style.display = 'block';
+        }
+
+        // Manejo del envío del formulario
+        function handleSubmit() {
+            if (validateForm()) {
+                submitToWhatsApp();
+                return false;  // Previene el envío normal del formulario
+            }
+            return false;
+        }
+    </script>
+
+</body>
+</html>
